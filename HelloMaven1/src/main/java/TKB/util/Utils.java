@@ -5,42 +5,18 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class Utils {
-    // Kiểu cũ: "1-3, 5, 7"
-    public static List<Integer> tachChuoiTuan(String tuanStr) {
-        List<Integer> result = new ArrayList<>();
-        String[] parts = tuanStr.split(",");
-        for (String p : parts) {
-            p = p.trim();
-            if (!p.matches("^[0-9\\-]+$")) continue;
-            if (p.contains("-")) {
-                String[] range = p.split("-");
-                try {
-                    int start = Integer.parseInt(range[0].trim());
-                    int end = Integer.parseInt(range[1].trim());
-                    for (int i = start; i <= end; i++) result.add(i);
-                } catch (NumberFormatException ignored) {}
-            } else {
-                try {
-                    result.add(Integer.parseInt(p));
-                } catch (NumberFormatException ignored) {}
-            }
-        }
-        return result;
-    }
-
-    // ✅ Mới: kiểu bitmask "----567890--------------"
-    public static List<Integer> tachChuoiTuanBitmask(String raw) {
+ 
+    public static List<Integer> tachChuoiTuan(String raw) {
         List<Integer> ds = new ArrayList<>();
         for (int i = 0; i < raw.length(); i++) {
             char c = raw.charAt(i);
             if (Character.isDigit(c) && c != '0') {
-                ds.add(i + 1); // tuần đánh số từ 1
+                ds.add(i + 1); 
             }
         }
         return ds;
     }
 
-    // Chuyển "Thứ 2", "Thứ ba", "CN" → số
     public static int chuyenThuSangSo(String thu) {
         thu = thu.toLowerCase().trim();
         if (thu.contains("2")) return 2;

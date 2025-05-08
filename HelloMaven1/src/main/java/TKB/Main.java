@@ -37,7 +37,7 @@ public class Main {
                 String rawTuan = cols.get(13).text().trim(); 
 
                 int thu = Integer.parseInt(thuStr);
-                List<Integer> cacTuan = Utils.tachChuoiTuanBitmask(rawTuan);
+                List<Integer> cacTuan = Utils.tachChuoiTuan(rawTuan);
 
                 LichHoc lh = new LichHoc(tenMon, phong, gv, tiet, lop);
                 for (int tuan : cacTuan) {
